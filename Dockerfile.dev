@@ -1,0 +1,19 @@
+# specify a base image
+FROM node:alpine
+
+# specify workdir
+WORKDIR '/app'
+
+# first copy the package.json
+COPY ./package.json ./
+
+# install dependencies
+RUN npm install
+
+# copy files needed (if source code is changed first 
+# 4 are unchanged and do not have in reinstall)
+COPY ./ ./
+
+
+# default command
+CMD ["npm", "run", "start"]
