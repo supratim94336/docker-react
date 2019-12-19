@@ -66,3 +66,20 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `npm run build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+### Docker Volumes
+Just to complement the accepted answer, according to Docker's Knowledge Base there are three types of volumes: host, anonymous, and named:
+
+A host volume lives on the Docker host's filesystem and can be accessed from within the container. Example volume path:
+```
+/path/on/host:/path/in/container
+```
+An anonymous volume is useful for when you would rather have Docker handle where the files are stored. It can be difficult, however, to refer to the same volume over time when it is an anonymous volumes. Example volume path:
+```
+/path/in/container
+```
+A named volume is similar to an anonymous volume. Docker manages where on disk the volume is created, but you give it a volume name. Example volume path:
+```
+name:/path/in/container
+```
+The path used in your example is an anonymous volume.
